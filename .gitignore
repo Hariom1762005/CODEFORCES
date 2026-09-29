@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# C++ compiled files
+*.out
+*.bin
+a.out
+*.exe
+
+# Specific executables
+D_What_a_SauSaGe_It_s_All_Meat
+test
+
+# Temporary test files
+test.cpp
+
+# VS Code
+.vscode/
+
+# CPH
+.cph/
+*.dSYM/
