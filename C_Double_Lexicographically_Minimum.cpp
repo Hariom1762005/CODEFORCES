@@ -11,42 +11,43 @@ const int MOD = 998244353;
 
 void solve() {
     
-    string s; cin>>s;
-    int n = s.size();
-     string ans (n , ' ');
-     
-     sort( all(s) );
-     
-     int left = 0, right = n-1;
-     int i=0;
-     while(i< n-1 && s[i] == s[i+1])
-     {
-         ans[ left++ ] = s[i++];
-         ans[ right-- ] = s[i++];
-     }
-     
-     if(i< n-1 && s[i+1] != s[n-1] )
-     {
-         ans[ right-- ] = s[i++];
-         ans[ left++ ] = s[i++];
-         
-         while(i<n)
-         {
-             ans[ left++ ] = s[i++];
-         }
-     }
-     else if( i< n-1 && s[i+1] == s[n-1])
-     {
-         swap( s[i], s[n-1] );
-        while(i< n-1 && s[i] == s[i+1])
-         {
-             ans[ left++ ] = s[i++];
-             ans[ right-- ] = s[i++];
-         }
-        if(i<n) ans[ left++ ] = s[ i++ ];
-     }
-      if(i<n) ans[ left ] = s[ i++ ];
-    cout << ans << endl;
+    int n , k ; cin >> n >> k;
+    vector <pair < int , int> > v(n);
+    
+   
+    for( int i = 0; i<n; i++ ) 
+    {
+        cin >> v[i].first ; 
+        cin >> v[i].second ;
+    }
+    
+    sort(v.begin(), v.end(), [](auto &a, auto &b) {
+    return a.second < b.second;
+});
+    multiset<int> s;
+
+    for (int i = 0; i < k; i++)
+    s.insert(0);
+
+    
+    int count = 0;
+    
+    for( int i = 0; i<n; i++ ) 
+    {
+        auto it = s.upper_bound(v[i].first);
+        
+        if (it != s.begin())
+        {
+            --it;
+        
+            s.erase(it);
+            s.insert(v[i].second);
+        
+            count++;
+        }
+    }
+    
+    cout << count << endl;
 }
 
 signed main() {
@@ -57,7 +58,7 @@ signed main() {
     
     
     int t = 1;
-    cin >> t;
+    //cin >> t;
 
    
     while (t--)
@@ -68,18 +69,7 @@ signed main() {
     return 0;
 }
 
-// a
-// aba
-// bab
-// bca
-// abba
-// abbba
-// ababa
-// bbab
-// bbabb
-// bbcca
-// agea
-// acffba
+
 
 
 
