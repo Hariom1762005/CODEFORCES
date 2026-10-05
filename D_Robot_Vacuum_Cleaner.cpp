@@ -30,23 +30,23 @@ void solve() {
             } 
         }
 
-        v.push_back( { counts  ,counth});
+        v.push_back( {  counts , counth});
     }
 
-    sort( v.rbegin(), v.rend(), [&](auto &x, auto &y){
-        if(x.first > y.first) return true;
-        else if(x.first == y.first){
-            return x.second < y.second;
-        }
-        else return false;
-    });
-   
-    int scount = v[0].second;
+    sort(v.begin(), v.end(), [](const pair<int,int> &a, const pair<int ,int> &b) {
 
+    
+
+    return a.first * b.second > a.second * b.first;
+});
+   
+    int scount = v[0].first;
+   
     for( int i = 1; i < v.size() ; i++)
     {
-        ans+= scount * v[i].first;
-        scount += v[i].second;
+        ans+= scount * v[i].second;
+        scount += v[i].first;
+        //cout<< ans<< " "<< scount<< endl;
     }
 
     cout << ans << endl;
