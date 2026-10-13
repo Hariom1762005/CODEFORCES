@@ -16,7 +16,8 @@ void solve() {
     vector < int > v(no_of_alarms);
     
     for( int i = 0 ; i < no_of_alarms; i++)  cin >> v[i];
-    if (tolerate == 1) { cout << no_of_alarms << endl; return; }
+    if(tolerate == 1) 
+    { cout << no_of_alarms << endl; return; }
     int ans = 0;
     sort( v.begin() , v.end() );
 
